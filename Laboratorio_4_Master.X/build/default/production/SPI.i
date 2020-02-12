@@ -2692,6 +2692,13 @@ void main(void) {
 
     while (1){
 
+        send_int(255);
+        send_int(5);
+        send_int(4);
+        send_int(3);
+        send_int(2);
+        PORTB = ttl;
+
     }
 
     return;

@@ -25,9 +25,10 @@
 #include <xc.h>
 #include <stdint.h>
 #include "Serial_Init.h"
+#include "SPI_Init.h"
 #define _XTAL_FREQ 4000000
 
-uint8_t ttl = 0;
+uint8_t ttl = 0, adc1 = 0, adc2 = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
@@ -50,14 +51,23 @@ void main(void) {
     PORTC = 0;
     
     initSerial(9600);//Inicializar serial y baudrate
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     
     while (1){
+       
+       spiWrite(0);
+       adc1 = spiRead();
+       __delay_ms(10);
+       
+       spiWrite(1);
+       adc2 = spiRead();
+       __delay_ms(10);
         
         send_int(255);
-        send_int(5);
-        send_int(4);
-        send_int(3);
-        send_int(2);
+        send_int(adc1);
+        send_int(0);
+        send_int(adc2);
+        send_int(1);
         PORTB = ttl;
         
     }

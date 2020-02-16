@@ -21,6 +21,8 @@
     </logicalFolder>
     <itemPath>ADC_Init.h</itemPath>
     <itemPath>ADC_Init.c</itemPath>
+    <itemPath>SPI_Init.h</itemPath>
+    <itemPath>SPI_Init.c</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

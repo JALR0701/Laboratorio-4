@@ -25,9 +25,10 @@
 #include <xc.h>
 #include <stdint.h>
 #include "ADC_Init.h"
+#include "SPI_Init.h"
 #define _XTAL_FREQ 4000000
 
-uint8_t ready = 0;
+uint8_t ready = 0, state = 0, adc1 = 0, adc2 = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
@@ -36,6 +37,17 @@ void __interrupt() ISR (void){
     if(ADCON0bits.GO_DONE == 0){//Si se realizo una conversion levantamos la bandera (se ejecua en el loop)
         ready = 1;
         PIR1bits.ADIF = 0;
+    }
+    
+    if(SSPIF == 1){
+        state = spiRead();
+        if (state == 0){
+         spiWrite(adc1);   
+        }
+        if (state == 1){
+            spiWrite(adc2);
+        }
+        SSPIF = 0;
     }
     
     INTCONbits.GIE = 1;
@@ -52,19 +64,26 @@ void main(void) {
     PORTA = 0;//Valor inicial de los puertos
     PORTB = 0;
     
+    PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
+    PIE1bits.SSPIE = 1; 
+    
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    
     while (1){
         initADC(0);
         if(ready){  //Guardamos el valor de la conversion
-            //PORTB = ADRESH;
+            PORTB = ADRESH;
+            adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
         initADC(1);
         if(ready){  //Guardamos el valor de la conversion
             PORTB = ADRESH;
+            adc2 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
-        }
+        }        
     }
     
     return;

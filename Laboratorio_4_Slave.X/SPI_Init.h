@@ -1,9 +1,8 @@
 /* 
  * File:   SPI_Init.h
- * Author: Jorge
- * Tomado de Electrosome
+ * Author: jorge
  *
- * Created on 12 de febrero de 2020, 02:13 PM
+ * Created on 16 de febrero de 2020, 10:57 AM
  */
 
 #ifndef SPI_INIT_H
@@ -11,7 +10,7 @@
 
 #include <xc.h>
 #include <stdint.h>
-#define _XTAL_FREQ 4000000  
+#define _XTAL_FREQ 4000000 
 
 typedef enum 
 {

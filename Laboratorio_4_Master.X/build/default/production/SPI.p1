@@ -46,7 +46,30 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./Serial_Init.h
 [; ;./Serial_Init.h: 15: void initSerial (uint16_t baudrate);
 [v _initSerial `(v ~T0 @X0 0 ef1`ui ]
-"16
+"54 SPI.c
+[; ;SPI.c: 54:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[c E1296 32 33 34 35 36 37 .. ]
+[n E1296 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
+[c E1304 0 128 .. ]
+[n E1304 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
+[c E1308 16 0 .. ]
+[n E1308 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
+[c E1312 0 64 .. ]
+[n E1312 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
+"45 ./SPI_Init.h
+[; ;./SPI_Init.h: 45: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+[v _spiInit `(v ~T0 @X0 0 ef4`E1296`E1304`E1308`E1312 ]
+"46
+[; ;./SPI_Init.h: 46: void spiWrite(char);
+[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
+"48
+[; ;./SPI_Init.h: 48: char spiRead();
+[v _spiRead `(uc ~T0 @X0 0 e? ]
+[v F1256 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic.h
+[v __delay `JF1256 ~T0 @X0 0 e ]
+[p i __delay ]
+"16 ./Serial_Init.h
 [; ;./Serial_Init.h: 16: void send_int (int msg);
 [v _send_int `(v ~T0 @X0 0 ef1`i ]
 "7 SPI.c
@@ -307,100 +330,129 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"30 SPI.c
-[; ;SPI.c: 30: uint8_t ttl = 0;
+"31 SPI.c
+[; ;SPI.c: 31: uint8_t ttl = 0, adc1 = 0, adc2 = 0;
 [v _ttl `uc ~T0 @X0 1 e ]
 [i _ttl
 -> -> 0 `i `uc
 ]
+[v _adc1 `uc ~T0 @X0 1 e ]
+[i _adc1
+-> -> 0 `i `uc
+]
+[v _adc2 `uc ~T0 @X0 1 e ]
+[i _adc2
+-> -> 0 `i `uc
+]
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"32
-[; ;SPI.c: 32: void __attribute__((picinterrupt(("")))) ISR (void){
+"33
+[; ;SPI.c: 33: void __attribute__((picinterrupt(("")))) ISR (void){
 [v _ISR `(v ~T1 @X0 1 ef ]
 {
 [e :U _ISR ]
 [f ]
-"33
-[; ;SPI.c: 33:     INTCONbits.GIE = 0;
-[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
 "34
-[; ;SPI.c: 34:     INTCONbits.PEIE = 0;
+[; ;SPI.c: 34:     INTCONbits.GIE = 0;
+[e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
+"35
+[; ;SPI.c: 35:     INTCONbits.PEIE = 0;
 [e = . . _INTCONbits 0 6 -> -> 0 `i `uc ]
-"36
-[; ;SPI.c: 36:     if (PIR1bits.RCIF == 1){
+"37
+[; ;SPI.c: 37:     if (PIR1bits.RCIF == 1){
 [e $ ! == -> . . _PIR1bits 0 5 `i -> 1 `i 139  ]
 {
-"37
-[; ;SPI.c: 37:         ttl = RCREG;
-[e = _ttl _RCREG ]
 "38
-[; ;SPI.c: 38:     }
+[; ;SPI.c: 38:         ttl = RCREG;
+[e = _ttl _RCREG ]
+"39
+[; ;SPI.c: 39:     }
 }
 [e :U 139 ]
-"40
-[; ;SPI.c: 40:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "41
-[; ;SPI.c: 41:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;SPI.c: 41:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "42
-[; ;SPI.c: 42: }
+[; ;SPI.c: 42:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"43
+[; ;SPI.c: 43: }
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"44
-[; ;SPI.c: 44: void main(void) {
+"45
+[; ;SPI.c: 45: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"46
-[; ;SPI.c: 46:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
 "47
-[; ;SPI.c: 47:     TRISC = 0;
+[; ;SPI.c: 47:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+"48
+[; ;SPI.c: 48:     TRISC = 0;
 [e = _TRISC -> -> 0 `i `uc ]
-"49
-[; ;SPI.c: 49:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
 "50
-[; ;SPI.c: 50:     PORTC = 0;
+[; ;SPI.c: 50:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+"51
+[; ;SPI.c: 51:     PORTC = 0;
 [e = _PORTC -> -> 0 `i `uc ]
-"52
-[; ;SPI.c: 52:     initSerial(9600);
+"53
+[; ;SPI.c: 53:     initSerial(9600);
 [e ( _initSerial (1 -> -> 9600 `i `ui ]
 "54
-[; ;SPI.c: 54:     while (1){
+[; ;SPI.c: 54:     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E1296 0 . `E1304 0 . `E1308 1 . `E1312 0 ]
+"56
+[; ;SPI.c: 56:     while (1){
 [e :U 142 ]
 {
-"56
-[; ;SPI.c: 56:         send_int(255);
-[e ( _send_int (1 -> 255 `i ]
-"57
-[; ;SPI.c: 57:         send_int(5);
-[e ( _send_int (1 -> 5 `i ]
 "58
-[; ;SPI.c: 58:         send_int(4);
-[e ( _send_int (1 -> 4 `i ]
+[; ;SPI.c: 58:        spiWrite(0);
+[e ( _spiWrite (1 -> -> 0 `i `uc ]
 "59
-[; ;SPI.c: 59:         send_int(3);
-[e ( _send_int (1 -> 3 `i ]
+[; ;SPI.c: 59:        adc1 = spiRead();
+[e = _adc1 -> ( _spiRead ..  `uc ]
 "60
-[; ;SPI.c: 60:         send_int(2);
-[e ( _send_int (1 -> 2 `i ]
-"61
-[; ;SPI.c: 61:         PORTB = ttl;
-[e = _PORTB _ttl ]
+[; ;SPI.c: 60:        _delay((unsigned long)((10)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"62
+[; ;SPI.c: 62:        spiWrite(1);
+[e ( _spiWrite (1 -> -> 1 `i `uc ]
 "63
-[; ;SPI.c: 63:     }
+[; ;SPI.c: 63:        adc2 = spiRead();
+[e = _adc2 -> ( _spiRead ..  `uc ]
+"64
+[; ;SPI.c: 64:        _delay((unsigned long)((10)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"66
+[; ;SPI.c: 66:         send_int(255);
+[e ( _send_int (1 -> 255 `i ]
+"67
+[; ;SPI.c: 67:         send_int(adc1);
+[e ( _send_int (1 -> _adc1 `i ]
+"68
+[; ;SPI.c: 68:         send_int(0);
+[e ( _send_int (1 -> 0 `i ]
+"69
+[; ;SPI.c: 69:         send_int(adc2);
+[e ( _send_int (1 -> _adc2 `i ]
+"70
+[; ;SPI.c: 70:         send_int(1);
+[e ( _send_int (1 -> 1 `i ]
+"71
+[; ;SPI.c: 71:         PORTB = ttl;
+[e = _PORTB _ttl ]
+"73
+[; ;SPI.c: 73:     }
 }
 [e :U 141 ]
 [e $U 142  ]
 [e :U 143 ]
-"65
-[; ;SPI.c: 65:     return;
+"75
+[; ;SPI.c: 75:     return;
 [e $UE 140  ]
-"66
-[; ;SPI.c: 66: }
+"76
+[; ;SPI.c: 76: }
 [e :UE 140 ]
 }

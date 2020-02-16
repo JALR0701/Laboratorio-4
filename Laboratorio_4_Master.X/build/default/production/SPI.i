@@ -2664,9 +2664,51 @@ void initSerial (uint16_t baudrate);
 void send_int (int msg);
 # 27 "SPI.c" 2
 
+# 1 "./SPI_Init.h" 1
+# 13 "./SPI_Init.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
+# 13 "./SPI_Init.h" 2
 
 
-uint8_t ttl = 0;
+
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 28 "SPI.c" 2
+
+
+
+uint8_t ttl = 0, adc1 = 0, adc2 = 0;
 
 void __attribute__((picinterrupt(("")))) ISR (void){
     INTCONbits.GIE = 0;
@@ -2689,14 +2731,23 @@ void main(void) {
     PORTC = 0;
 
     initSerial(9600);
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
     while (1){
 
+       spiWrite(0);
+       adc1 = spiRead();
+       _delay((unsigned long)((10)*(4000000/4000.0)));
+
+       spiWrite(1);
+       adc2 = spiRead();
+       _delay((unsigned long)((10)*(4000000/4000.0)));
+
         send_int(255);
-        send_int(5);
-        send_int(4);
-        send_int(3);
-        send_int(2);
+        send_int(adc1);
+        send_int(0);
+        send_int(adc2);
+        send_int(1);
         PORTB = ttl;
 
     }

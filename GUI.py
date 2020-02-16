@@ -35,6 +35,8 @@ Main. config (background = "Black")
 com = tk.Label(Main, text = "COM:" + numero, bg = "black", fg = "white", font = ("Times New Roman", 24)) #Label que muestra el COM utilizado
 com.pack()
 
+data.write(struct.pack('>B',0))
+
 
 def getSensor(): #Funcion para leer el puerto continuamente
     if ord(data.read()) == 255: #Verificar y ordenar datos

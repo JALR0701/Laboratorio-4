@@ -43,8 +43,8 @@ def getSensor(): #Funcion para leer el puerto continuamente
         s1 = ord(data.read())
         s2 = ord(data.read())
 
-        sensor1 = round(s1 * 5/255, 2)
-        sensor2 = round(s2 * 5/255, 2)
+        sensor1 = "{0:.2f}".format(s1 * 5/255)
+        sensor2 = "{0:.2f}".format(s2 * 5/255)
 
         sensor1 = str(sensor1) + "V"
         sensor2 = str(sensor2) + "V"

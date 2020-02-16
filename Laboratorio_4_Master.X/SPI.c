@@ -22,18 +22,24 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
+//*****************************************************************************
+// Definición e importación de librerías
+//*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
-#include "Serial_Init.h"
 #include "SPI_Init.h"
+#include "Serial_Init.h"
+//*****************************************************************************
+// Definición de variables
+//*****************************************************************************
 #define _XTAL_FREQ 4000000
 
-uint8_t ttl = 0, adc1 = 0, adc2 = 0;
+uint8_t read1 = 0, read2 = 0, ttl = 0;
 
 void __interrupt() ISR (void){
     INTCONbits.GIE = 0;
     INTCONbits.PEIE = 0;
-        
+
     if (PIR1bits.RCIF == 1){//Si hay datos en el puerto se leen y se guardan en una variable
         ttl = RCREG;
     }
@@ -44,33 +50,33 @@ void __interrupt() ISR (void){
 
 void main(void) {
     
-    TRISB = 0;//Configuración I/O
-    TRISC = 0B00010000;
-    
-    PORTB = 0;//Valor inicial de los puertos
-    PORTC = 0;
-    
-    initSerial(9600);//Inicializar serial y baudrate
+    ANSEL = 0;
+    ANSELH = 0;
+    TRISC2 = 0;
+    TRISB = 0;
+    TRISD = 0;
+    PORTB = 0;
+    PORTD = 0;
+    PORTCbits.RC2 = 1;
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    initSerial(9600);//Inicializar serial y baudrate
     
-    while (1){
-       
-       spiWrite(0);
-       adc1 = spiRead();
-       __delay_ms(10);
+    while(1){
        
        spiWrite(1);
-       adc2 = spiRead();
+       read1 = spiRead();
        __delay_ms(10);
-        
-        send_int(255);
-        send_int(adc1);
-        send_int(0);
-        send_int(adc2);
-        send_int(1);
-        PORTB = ttl;
-        
+       
+       spiWrite(2);
+       read2 = spiRead();
+       __delay_ms(10);
+       
+       send_int(read1);
+       send_int(read2);
+       send_int(255);
+       PORTB = ttl;
+       
+       
     }
-    
     return;
 }

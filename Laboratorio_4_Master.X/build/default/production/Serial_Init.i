@@ -2644,7 +2644,8 @@ void initSerial(uint16_t baudrate){
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
 
-    TRISC = 0x80;
+    TRISCbits.TRISC7 = 1;
+    TRISCbits.TRISC6 = 0;
 
     PIE1bits.RCIE = 1;
 

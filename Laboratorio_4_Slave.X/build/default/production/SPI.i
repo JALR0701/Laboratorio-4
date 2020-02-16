@@ -32,6 +32,9 @@
 
 
 
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2516,7 +2519,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 25 "SPI.c" 2
+# 28 "SPI.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
@@ -2651,17 +2654,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 26 "SPI.c" 2
-
-# 1 "./ADC_Init.h" 1
-# 12 "./ADC_Init.h"
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 12 "./ADC_Init.h" 2
-
-
-
-void initADC (uint8_t analog);
-# 27 "SPI.c" 2
+# 29 "SPI.c" 2
 
 # 1 "./SPI_Init.h" 1
 # 12 "./SPI_Init.h"
@@ -2703,73 +2696,77 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
-# 28 "SPI.c" 2
+# 30 "SPI.c" 2
+
+# 1 "./ADC_Init.h" 1
+# 12 "./ADC_Init.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
+# 12 "./ADC_Init.h" 2
 
 
 
-uint8_t ready = 0, state = 0, adc1 = 0, adc2 = 0;
+void initADC (uint8_t analog);
+# 31 "SPI.c" 2
 
-void __attribute__((picinterrupt(("")))) ISR (void){
-    INTCONbits.GIE = 0;
-    INTCONbits.PEIE = 0;
 
-    if(ADCON0bits.GO_DONE == 0){
-        ready = 1;
-        PIR1bits.ADIF = 0;
-    }
 
-    if(SSPIF == 1){
+
+
+
+uint8_t ready = 0, adc1 = 0, adc2 = 0, state = 0;
+
+void __attribute__((picinterrupt(("")))) isr(void){
+   if(SSPIF == 1){
         state = spiRead();
-        if (state == 0){
+        PORTB = state;
+        if (state == 1){
             spiWrite(adc1);
         }
-        if (state == 1){
-            PORTAbits.RA2 = 1;
+        if (state == 2){
             spiWrite(adc2);
         }
         SSPIF = 0;
     }
-
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
+   if(ADCON0bits.GO_DONE == 0){
+        ready = 1;
+        PIR1bits.ADIF = 0;
+    }
 }
 
 void main(void) {
 
-    TRISA = 0B00100011;
-    TRISB = 0;
-    TRISC = 0B00011000;
-
     ANSEL = 0b00000011;
+    ANSELH = 0;
+
+    TRISA = 0b00100011;
+    TRISB = 0;
+    TRISD = 0;
 
     PORTA = 0;
     PORTB = 0;
-    PORTC = 0;
+    PORTD = 0;
 
     INTCONbits.GIE = 1;
     INTCONbits.PEIE = 1;
-
     PIR1bits.SSPIF = 0;
     PIE1bits.SSPIE = 1;
+    TRISAbits.TRISA5 = 1;
 
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
 
-    while (1){
-        initADC(0);
+    while(1){
+       initADC(0);
         if(ready){
-
             adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
-        initADC(1);
+       initADC(1);
         if(ready){
-            PORTB = ADRESH;
             adc2 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
     }
-
     return;
 }

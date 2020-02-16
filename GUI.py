@@ -40,24 +40,14 @@ data.write(struct.pack('>B',0))
 
 def getSensor(): #Funcion para leer el puerto continuamente
     if ord(data.read()) == 255: #Verificar y ordenar datos
-        s11 = ord(data.read())
-        s12 = ord(data.read())
-        s21 = ord(data.read())
-        s22 = ord(data.read())
+        s1 = ord(data.read())
+        s2 = ord(data.read())
 
-        if s12 < 10: #Concatenar los valores 
-            sensor1 = str(s11) + ".0" + str (s12) + "V"
-            #print (sensor1)
-        else:
-            sensor1 = str(s11) + "." + str (s12) + "V"
-            #print (sensor1)
+        sensor1 = round(s1 * 5/255, 2)
+        sensor2 = round(s2 * 5/255, 2)
 
-        if s22 < 10:
-            sensor2 = str(s21) + ".0" + str (s22) + "V"
-            #print (sensor2)
-        else:
-            sensor2 = str(s21) + "." + str (s22) + "V"
-            #print (sensor2)
+        sensor1 = str(sensor1) + "V"
+        sensor2 = str(sensor2) + "V"
             
         POT01.set(sensor1) #Definir el valor al texto variable de un label
         POT02.set(sensor2)

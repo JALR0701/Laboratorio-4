@@ -32,6 +32,9 @@
 
 
 
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2516,7 +2519,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 25 "SPI.c" 2
+# 28 "SPI.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 3
@@ -2651,18 +2654,7 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 26 "SPI.c" 2
-
-# 1 "./Serial_Init.h" 1
-# 12 "./Serial_Init.h"
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
-# 12 "./Serial_Init.h" 2
-
-
-
-void initSerial (uint16_t baudrate);
-void send_int (int msg);
-# 27 "SPI.c" 2
+# 29 "SPI.c" 2
 
 # 1 "./SPI_Init.h" 1
 # 13 "./SPI_Init.h"
@@ -2704,11 +2696,25 @@ void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
 void spiWrite(char);
 unsigned spiDataReady();
 char spiRead();
-# 28 "SPI.c" 2
+# 30 "SPI.c" 2
+
+# 1 "./Serial_Init.h" 1
+# 12 "./Serial_Init.h"
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdint.h" 1 3
+# 12 "./Serial_Init.h" 2
 
 
 
-uint8_t ttl = 0, adc1 = 0, adc2 = 0;
+void initSerial (uint16_t baudrate);
+void send_int (int msg);
+# 31 "SPI.c" 2
+
+
+
+
+
+
+uint8_t read1 = 0, read2 = 0, ttl = 0;
 
 void __attribute__((picinterrupt(("")))) ISR (void){
     INTCONbits.GIE = 0;
@@ -2724,33 +2730,33 @@ void __attribute__((picinterrupt(("")))) ISR (void){
 
 void main(void) {
 
+    ANSEL = 0;
+    ANSELH = 0;
+    TRISC2 = 0;
     TRISB = 0;
-    TRISC = 0B00010000;
-
+    TRISD = 0;
     PORTB = 0;
-    PORTC = 0;
-
-    initSerial(9600);
+    PORTD = 0;
+    PORTCbits.RC2 = 1;
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+    initSerial(9600);
 
-    while (1){
-
-       spiWrite(0);
-       adc1 = spiRead();
-       _delay((unsigned long)((10)*(4000000/4000.0)));
+    while(1){
 
        spiWrite(1);
-       adc2 = spiRead();
+       read1 = spiRead();
        _delay((unsigned long)((10)*(4000000/4000.0)));
 
-        send_int(255);
-        send_int(adc1);
-        send_int(0);
-        send_int(adc2);
-        send_int(1);
-        PORTB = ttl;
+       spiWrite(2);
+       read2 = spiRead();
+       _delay((unsigned long)((10)*(4000000/4000.0)));
+
+       send_int(read1);
+       send_int(read2);
+       send_int(255);
+       PORTB = ttl;
+
 
     }
-
     return;
 }

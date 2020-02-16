@@ -22,75 +22,72 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
+//*****************************************************************************
+// Definición e importación de librerías
+//*****************************************************************************
 #include <xc.h>
 #include <stdint.h>
-#include "ADC_Init.h"
 #include "SPI_Init.h"
+#include "ADC_Init.h"
+//*****************************************************************************
+// Definición de variables
+//*****************************************************************************
 #define _XTAL_FREQ 4000000
 
-uint8_t ready = 0, state = 0, adc1 = 0, adc2 = 0;
+uint8_t ready = 0, adc1 = 0, adc2 = 0, state = 0;
 
-void __interrupt() ISR (void){
-    INTCONbits.GIE = 0;
-    INTCONbits.PEIE = 0;
-    
-    if(ADCON0bits.GO_DONE == 0){//Si se realizo una conversion levantamos la bandera (se ejecua en el loop)
-        ready = 1;
-        PIR1bits.ADIF = 0;
-    }
-    
-    if(SSPIF == 1){
+void __interrupt() isr(void){
+   if(SSPIF == 1){
         state = spiRead();
-        if (state == 0){
-            spiWrite(adc1);   
-        }
+        PORTB = state;
         if (state == 1){
-            PORTAbits.RA2 = 1;
+            spiWrite(adc1);
+        }
+        if (state == 2){
             spiWrite(adc2);
         }
         SSPIF = 0;
     }
-    
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
+   if(ADCON0bits.GO_DONE == 0){//Si se realizo una conversion levantamos la bandera (se ejecua en el loop)
+        ready = 1;
+        PIR1bits.ADIF = 0;
+    }
 }
 
 void main(void) {
     
-    TRISA = 0B00100011;//Configuracion I/O
-    TRISB = 0;
-    TRISC = 0B00011000;
-    
     ANSEL = 0b00000011;
+    ANSELH = 0;
     
-    PORTA = 0;//Valor inicial de los puertos
+    TRISA = 0b00100011;
+    TRISB = 0;
+    TRISD = 0;
+    
+    PORTA = 0;
     PORTB = 0;
-    PORTC = 0;
+    PORTD = 0;
     
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    
+    INTCONbits.GIE = 1;         // Habilitamos interrupciones
+    INTCONbits.PEIE = 1;        // Habilitamos interrupciones PEIE
     PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
-    PIE1bits.SSPIE = 1; 
-    
+    PIE1bits.SSPIE = 1;         // Habilitamos interrupción MSSP
+    TRISAbits.TRISA5 = 1;       // Slave Select
+   
     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-    
-    while (1){
-        initADC(0);
+
+    while(1){
+       initADC(0); //Inicializamos el primer canal del ADC
         if(ready){  //Guardamos el valor de la conversion
-            //PORTB = ADRESH;
             adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
         }
-        initADC(1);
+       initADC(1); //Inicializamos el primer canal del ADC
         if(ready){  //Guardamos el valor de la conversion
-            PORTB = ADRESH;
             adc2 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;
-        }        
+        }
     }
-    
     return;
 }

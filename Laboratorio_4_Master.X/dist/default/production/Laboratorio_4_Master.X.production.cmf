@@ -11,20 +11,20 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\jorge\AppData\Local\Temp\s2mc.o
+$C:\Users\jorge\AppData\Local\Temp\s2s0.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 0 2007 2007 2 2
 $dist/default/production\Laboratorio_4_Master.X.production.o
 cinit CODE 0 F F 7 2
-text1 CODE 0 129 129 6 2
-text2 CODE 0 119 119 9 2
-text3 CODE 0 122 122 7 2
-text4 CODE 0 E3 E3 16 2
-text5 CODE 0 10E 10E B 2
-text6 CODE 0 A3 A3 40 2
-text7 CODE 0 F9 F9 15 2
-maintext CODE 0 16 16 8D 2
+text1 CODE 0 11D 11D 6 2
+text2 CODE 0 10D 10D 9 2
+text3 CODE 0 116 116 7 2
+text4 CODE 0 D7 D7 16 2
+text5 CODE 0 102 102 B 2
+text6 CODE 0 97 97 40 2
+text7 CODE 0 ED ED 15 2
+maintext CODE 0 16 16 81 2
 cstackCOMMON COMMON 1 70 70 7 1
 cstackBANK0 BANK0 1 20 20 2 1
 intentry CODE 0 4 4 8 2
@@ -44,13 +44,13 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 12F-1FFF 2
+CONST 123-1FFF 2
 ENTRY 3-3 2
-ENTRY 12F-1FFF 2
+ENTRY 123-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 12F-1FFF 2
+CODE 123-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
@@ -58,9 +58,9 @@ SFR3 180-18F 1
 COMMON 7A-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 12F-1FFF 2
+STRCODE 123-1FFF 2
 STRING 3-3 2
-STRING 12F-1FFF 2
+STRING 123-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -75,87 +75,90 @@ STRING 12F-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio_4_Master.X.production.o
-F cinit CODE >796:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-F cinit CODE >799:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-F cinit CODE >816:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-10 cinit CODE >817:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-11 cinit CODE >818:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-12 cinit CODE >824:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-12 cinit CODE >826:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-13 cinit CODE >827:C:\Users\jorge\AppData\Local\Temp\s2mc.s
-4 intentry CODE >33:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-F9 text7 CODE >33:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-F9 text7 CODE >34:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-FA text7 CODE >35:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-FB text7 CODE >37:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-101 text7 CODE >38:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-105 text7 CODE >41:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-106 text7 CODE >42:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-107 text7 CODE >43:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-A3 text6 CODE >5:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-A3 text6 CODE >6:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-A4 text6 CODE >7:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-A5 text6 CODE >9:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-A9 text6 CODE >11:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-AA text6 CODE >13:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-AC text6 CODE >15:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-B0 text6 CODE >17:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-B3 text6 CODE >18:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-B6 text6 CODE >21:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-BF text6 CODE >22:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-C1 text6 CODE >23:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-CB text6 CODE >24:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-CD text6 CODE >25:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-D5 text6 CODE >26:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-D7 text6 CODE >27:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-DF text6 CODE >28:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-E2 text6 CODE >29:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-E2 text6 CODE >30:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-10E text5 CODE >32:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-10E text5 CODE >33:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-10E text5 CODE >34:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-114 text5 CODE >35:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-118 text5 CODE >36:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
-E3 text4 CODE >7:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-E4 text4 CODE >9:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-E7 text4 CODE >10:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-EB text4 CODE >12:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-ED text4 CODE >13:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-EE text4 CODE >14:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-EF text4 CODE >17:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-F2 text4 CODE >18:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-F3 text4 CODE >19:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-F3 text4 CODE >21:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-F8 text4 CODE >22:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-122 text3 CODE >24:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-122 text3 CODE >26:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-128 text3 CODE >27:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-119 text2 CODE >42:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-119 text2 CODE >44:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-11E text2 CODE >45:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-121 text2 CODE >46:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-129 text1 CODE >29:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-12A text1 CODE >31:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-12E text1 CODE >32:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
-16 maintext CODE >45:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-16 maintext CODE >47:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-19 maintext CODE >48:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-1B maintext CODE >50:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-1E maintext CODE >51:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-1F maintext CODE >53:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-28 maintext CODE >54:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-31 maintext CODE >58:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-37 maintext CODE >59:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-41 maintext CODE >60:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-4B maintext CODE >62:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-51 maintext CODE >63:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-5B maintext CODE >64:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-65 maintext CODE >66:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-6E maintext CODE >67:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-7C maintext CODE >68:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-84 maintext CODE >69:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-92 maintext CODE >70:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
-9B maintext CODE >71:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+F cinit CODE >806:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+F cinit CODE >809:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+F cinit CODE >826:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+10 cinit CODE >827:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+11 cinit CODE >828:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+12 cinit CODE >834:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+12 cinit CODE >836:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+13 cinit CODE >837:C:\Users\jorge\AppData\Local\Temp\s2s0.s
+4 intentry CODE >39:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+ED text7 CODE >39:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+ED text7 CODE >40:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+EE text7 CODE >41:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+EF text7 CODE >43:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+F5 text7 CODE >44:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+F9 text7 CODE >47:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+FA text7 CODE >48:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+FB text7 CODE >49:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+97 text6 CODE >5:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+97 text6 CODE >6:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+98 text6 CODE >7:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+99 text6 CODE >9:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+9C text6 CODE >10:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+9D text6 CODE >12:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+9E text6 CODE >14:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+A0 text6 CODE >16:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+A4 text6 CODE >18:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+A7 text6 CODE >19:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+AA text6 CODE >22:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+B3 text6 CODE >23:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+B5 text6 CODE >24:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+BF text6 CODE >25:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+C1 text6 CODE >26:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+C9 text6 CODE >27:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+CB text6 CODE >28:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+D3 text6 CODE >29:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+D6 text6 CODE >30:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+D6 text6 CODE >31:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+102 text5 CODE >33:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+102 text5 CODE >34:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+102 text5 CODE >35:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+108 text5 CODE >36:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+10C text5 CODE >37:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\Serial_Init.c
+D7 text4 CODE >7:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+D8 text4 CODE >9:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+DB text4 CODE >10:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+DF text4 CODE >12:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+E1 text4 CODE >13:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+E2 text4 CODE >14:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+E3 text4 CODE >17:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+E6 text4 CODE >18:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+E7 text4 CODE >19:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+E7 text4 CODE >21:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+EC text4 CODE >22:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+116 text3 CODE >24:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+116 text3 CODE >26:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+11C text3 CODE >27:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+10D text2 CODE >42:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+10D text2 CODE >44:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+112 text2 CODE >45:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+115 text2 CODE >46:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+11D text1 CODE >29:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+11E text1 CODE >31:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+122 text1 CODE >32:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI_Init.c
+16 maintext CODE >51:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+16 maintext CODE >53:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+19 maintext CODE >54:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+1A maintext CODE >55:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+1D maintext CODE >56:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+1E maintext CODE >57:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+1F maintext CODE >58:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+22 maintext CODE >59:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+23 maintext CODE >60:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+24 maintext CODE >61:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+2D maintext CODE >62:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+36 maintext CODE >66:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+3C maintext CODE >67:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+46 maintext CODE >68:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+50 maintext CODE >70:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+56 maintext CODE >71:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+60 maintext CODE >72:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+6A maintext CODE >74:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+78 maintext CODE >75:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+86 maintext CODE >76:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
+8F maintext CODE >77:C:\Users\jorge\MPLABXProjects\Laboratorio-4\Laboratorio_4_Master.X\SPI.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -177,44 +180,45 @@ __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.produc
 spiInit@sTransmitEdge 75 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\s2mc.o
-_adc1 78 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
-_adc2 77 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\s2s0.o
 _main 2C 0 CODE 0 maintext dist/default/production\Laboratorio_4_Master.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-start 18 0 CODE 0 init C:\Users\jorge\AppData\Local\Temp\s2mc.o
+start 18 0 CODE 0 init C:\Users\jorge\AppData\Local\Temp\s2s0.o
 __CFG_BOREN$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
 __size_of_initSerial 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2mc.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2mc.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2mc.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2mc.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2mc.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2mc.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2s0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2s0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2s0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2s0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2s0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\jorge\AppData\Local\Temp\s2s0.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 wtemp0 7E 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
+_ANSELH 189 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __size_of_spiInit 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __size_of_spiRead 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\s2mc.o
-___stacklo 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\s2mc.o
+___stackhi 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\s2s0.o
+___stacklo 0 0 ABS 0 - C:\Users\jorge\AppData\Local\Temp\s2s0.o
 _BAUDCTLbits 187 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 spiInit@sDataSample 73 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Laboratorio_4_Master.X.production.o
+_TRISCbits 87 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _SPBRGH 9A 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_4_Master.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
+_TRISC2 43A 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _TRISC5 43D 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\s2mc.o
+___int_sp 0 0 STACK 2 stack C:\Users\jorge\AppData\Local\Temp\s2s0.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -224,8 +228,8 @@ __size_of_spiReceiveWait 0 0 ABS 0 - dist/default/production\Laboratorio_4_Maste
 __Hidloc 0 0 IDLOC 0 idloc -
 __Hstack 0 0 STACK 2 stack -
 __Hmaintext 0 0 ABS 0 maintext -
-__end_of_spiInit 1F2 0 CODE 0 text4 dist/default/production\Laboratorio_4_Master.X.production.o
-__end_of_spiRead 244 0 CODE 0 text2 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_spiInit 1DA 0 CODE 0 text4 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_spiRead 22C 0 CODE 0 text2 dist/default/production\Laboratorio_4_Master.X.production.o
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4012 0 CONFIG 0 config -
 __Lbank0 0 0 ABS 0 bank0 -
@@ -235,6 +239,7 @@ __Lbank3 0 0 ABS 0 bank3 -
 __Lcinit 1E 0 CODE 0 cinit -
 __Lidloc 0 0 IDLOC 0 idloc -
 __Lstack 0 0 STACK 2 stack -
+_PORTCbits 7 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _INTCONbits B 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
@@ -255,18 +260,18 @@ __Ltext 0 0 ABS 0 text -
 send_int@msg 73 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-_ISR 1F2 0 CODE 0 text7 dist/default/production\Laboratorio_4_Master.X.production.o
+_ISR 1DA 0 CODE 0 text7 dist/default/production\Laboratorio_4_Master.X.production.o
 __S0 2009 0 ABS 0 - -
 __S1 7A 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_ttl 79 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
+_ttl 77 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_BOR4V$BOR40V 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_FOSC$INTRC_NOCLKOUT 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-__end_of_ISR 21C 0 CODE 0 text7 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_ISR 204 0 CODE 0 text7 dist/default/production\Laboratorio_4_Master.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\jorge\AppData\Local\Temp\s2mc.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\jorge\AppData\Local\Temp\s2s0.o
 __size_of_send_int 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 initSerial@baudrate 73 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
@@ -275,71 +280,74 @@ __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-_initSerial 146 0 CODE 0 text6 dist/default/production\Laboratorio_4_Master.X.production.o
+_initSerial 12E 0 CODE 0 text6 dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-_send_int 21C 0 CODE 0 text5 dist/default/production\Laboratorio_4_Master.X.production.o
+_send_int 204 0 CODE 0 text5 dist/default/production\Laboratorio_4_Master.X.production.o
 __pbssCOMMON 77 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 _PIR1bits C 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Lend_init 18 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 end_of_initialization 24 0 CODE 0 cinit dist/default/production\Laboratorio_4_Master.X.production.o
-__end_of_send_int 232 0 CODE 0 text5 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_send_int 21A 0 CODE 0 text5 dist/default/production\Laboratorio_4_Master.X.production.o
 __Hintentry 18 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 6 0 CODE 0 reset_vec -
-__ptext1 252 0 CODE 0 text1 dist/default/production\Laboratorio_4_Master.X.production.o
-__ptext2 232 0 CODE 0 text2 dist/default/production\Laboratorio_4_Master.X.production.o
-__ptext3 244 0 CODE 0 text3 dist/default/production\Laboratorio_4_Master.X.production.o
-__ptext4 1C6 0 CODE 0 text4 dist/default/production\Laboratorio_4_Master.X.production.o
-__ptext5 21C 0 CODE 0 text5 dist/default/production\Laboratorio_4_Master.X.production.o
-__ptext6 146 0 CODE 0 text6 dist/default/production\Laboratorio_4_Master.X.production.o
-__ptext7 1F2 0 CODE 0 text7 dist/default/production\Laboratorio_4_Master.X.production.o
-_spiInit 1C6 0 CODE 0 text4 dist/default/production\Laboratorio_4_Master.X.production.o
-_spiRead 232 0 CODE 0 text2 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext1 23A 0 CODE 0 text1 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext2 21A 0 CODE 0 text2 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext3 22C 0 CODE 0 text3 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext4 1AE 0 CODE 0 text4 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext5 204 0 CODE 0 text5 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext6 12E 0 CODE 0 text6 dist/default/production\Laboratorio_4_Master.X.production.o
+__ptext7 1DA 0 CODE 0 text7 dist/default/production\Laboratorio_4_Master.X.production.o
+_spiInit 1AE 0 CODE 0 text4 dist/default/production\Laboratorio_4_Master.X.production.o
+_spiRead 21A 0 CODE 0 text2 dist/default/production\Laboratorio_4_Master.X.production.o
 spiWrite@dat 73 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 spiInit@sType 76 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-__end_of_initSerial 1C6 0 CODE 0 text6 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_initSerial 1AE 0 CODE 0 text6 dist/default/production\Laboratorio_4_Master.X.production.o
 __end_of__initialization 24 0 CODE 0 cinit dist/default/production\Laboratorio_4_Master.X.production.o
 __size_of_spiWrite 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
-_spiReceiveWait 244 0 CODE 0 text3 dist/default/production\Laboratorio_4_Master.X.production.o
+_spiReceiveWait 22C 0 CODE 0 text3 dist/default/production\Laboratorio_4_Master.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 _TXSTAbits 98 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _SSPSTAT 94 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 146 0 CODE 0 maintext dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_main 12E 0 CODE 0 maintext dist/default/production\Laboratorio_4_Master.X.production.o
+_ANSEL 188 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-_PORTC 7 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
+_PORTD 8 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _RCREG 1A 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _RCSTA 18 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _SPBRG 99 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _TRISB 86 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-_TRISC 87 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
+_TRISD 88 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _TXREG 19 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 _TXSTA 98 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
+_read1 79 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
+_read2 78 0 COMMON 1 bssCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 _SSPSTATbits 94 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\Laboratorio_4_Master.X.production.o
 __size_of_ISR 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
 spiInit@sClockIdle 74 0 COMMON 1 cstackCOMMON dist/default/production\Laboratorio_4_Master.X.production.o
 __initialization 1E 0 CODE 0 cinit dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-_spiWrite 252 0 CODE 0 text1 dist/default/production\Laboratorio_4_Master.X.production.o
+_spiWrite 23A 0 CODE 0 text1 dist/default/production\Laboratorio_4_Master.X.production.o
 __CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\Laboratorio_4_Master.X.production.o
-__end_of_spiReceiveWait 252 0 CODE 0 text3 dist/default/production\Laboratorio_4_Master.X.production.o
-__end_of_spiWrite 25E 0 CODE 0 text1 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_spiReceiveWait 23A 0 CODE 0 text3 dist/default/production\Laboratorio_4_Master.X.production.o
+__end_of_spiWrite 246 0 CODE 0 text1 dist/default/production\Laboratorio_4_Master.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -367,7 +375,7 @@ __end_of_spiWrite 25E 0 CODE 0 text1 dist/default/production\Laboratorio_4_Maste
 %SEGMENTS
 cstackCOMMON 1 70 70 A 1
 cstackBANK0 1 20 20 2 1
-intentry 0 4 8 12B 2
+intentry 0 4 8 11F 2
 reset_vec 0 0 0 3 2
 config 0 2007 400E 2 2
 # OTES Section

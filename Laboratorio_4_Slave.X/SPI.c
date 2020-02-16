@@ -42,9 +42,10 @@ void __interrupt() ISR (void){
     if(SSPIF == 1){
         state = spiRead();
         if (state == 0){
-         spiWrite(adc1);   
+            spiWrite(adc1);   
         }
         if (state == 1){
+            PORTAbits.RA2 = 1;
             spiWrite(adc2);
         }
         SSPIF = 0;
@@ -56,13 +57,18 @@ void __interrupt() ISR (void){
 
 void main(void) {
     
-    TRISA = 0B00000011;//Configuracion I/O
+    TRISA = 0B00100011;//Configuracion I/O
     TRISB = 0;
+    TRISC = 0B00011000;
     
     ANSEL = 0b00000011;
     
     PORTA = 0;//Valor inicial de los puertos
     PORTB = 0;
+    PORTC = 0;
+    
+    INTCONbits.GIE = 1;
+    INTCONbits.PEIE = 1;
     
     PIR1bits.SSPIF = 0;         // Borramos bandera interrupción MSSP
     PIE1bits.SSPIE = 1; 
@@ -72,7 +78,7 @@ void main(void) {
     while (1){
         initADC(0);
         if(ready){  //Guardamos el valor de la conversion
-            PORTB = ADRESH;
+            //PORTB = ADRESH;
             adc1 = ADRESH;
             ready = 0;
             ADCON0bits.GO_DONE = 1;

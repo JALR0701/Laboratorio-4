@@ -389,8 +389,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SPI.c: 47:     TRISB = 0;
 [e = _TRISB -> -> 0 `i `uc ]
 "48
-[; ;SPI.c: 48:     TRISC = 0;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;SPI.c: 48:     TRISC = 0B00010000;
+[e = _TRISC -> -> 16 `i `uc ]
 "50
 [; ;SPI.c: 50:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]

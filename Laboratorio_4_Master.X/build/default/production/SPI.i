@@ -2725,7 +2725,7 @@ void __attribute__((picinterrupt(("")))) ISR (void){
 void main(void) {
 
     TRISB = 0;
-    TRISC = 0;
+    TRISC = 0B00010000;
 
     PORTB = 0;
     PORTC = 0;

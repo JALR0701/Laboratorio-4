@@ -45,7 +45,7 @@ void __interrupt() ISR (void){
 void main(void) {
     
     TRISB = 0;//Configuración I/O
-    TRISC = 0;
+    TRISC = 0B00010000;
     
     PORTB = 0;//Valor inicial de los puertos
     PORTC = 0;

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
   -cs -h+dist/default/production\Laboratorio_4_Slave.X.production.sym \
   --cmf=dist/default/production\Laboratorio_4_Slave.X.production.cmf -z \
-  -Q16F887 -oC:\Users\jorge\AppData\Local\Temp\s3l4.2 \
+  -Q16F887 -oC:\Users\jorge\AppData\Local\Temp\s65g.2 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Laboratorio_4_Slave.X.production.map -E1 \
   -ver=XC8 --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
@@ -19,7 +19,7 @@ Linker command line:
   -pfunctab=ENTRY -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k C:\Users\jorge\AppData\Local\Temp\s3l4.o \
+  -DENTRY=2 -k C:\Users\jorge\AppData\Local\Temp\s65g.o \
   dist/default/production\Laboratorio_4_Slave.X.production.o 
 
 Object code version is 3.11
@@ -29,20 +29,20 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\jorge\AppData\Local\Temp\s3l4.o
+C:\Users\jorge\AppData\Local\Temp\s65g.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2     400E       0
 dist/default/production\Laboratorio_4_Slave.X.production.o
                 cinit                                 F        F        8        8       0
                 intentry                              4        4        8        8       0
-                text6                               161      161        7        8       0
-                text5                               158      158        9        8       0
-                text4                               168      168        6        8       0
-                text3                               101      101       39        8       0
+                text6                               167      167        7        8       0
+                text5                               15E      15E        9        8       0
+                text4                               16E      16E        6        8       0
+                text3                               104      104       3C        8       0
                 text2                                17       17       A0        8       0
-                text1                               13A      13A       1E        8       0
-                maintext                             B7       B7       4A        8       0
+                text1                               140      140       1E        8       0
+                maintext                             B7       B7       4D        8       0
                 cstackBANK0                          20       20        4       20       1
                 cstackCOMMON                         70       70        6       70       1
                 bssCOMMON                            76       76        4       70       1
@@ -55,13 +55,13 @@ TOTAL           Name                               Link     Load   Length     Sp
                 cinit                                 F        F        8         0
                 intentry                              4        4        8         0
                 reset_vec                             0        0        3         0
-                text6                               161      161        7         0
-                text5                               158      158        9         0
-                text4                               168      168        6         0
-                text3                               101      101       39         0
+                text6                               167      167        7         0
+                text5                               15E      15E        9         0
+                text4                               16E      16E        6         0
+                text3                               104      104       3C         0
                 text2                                17       17       A0         0
-                text1                               13A      13A       1E         0
-                maintext                             B7       B7       4A         0
+                text1                               140      140       1E         0
+                maintext                             B7       B7       4D         0
 
         CLASS   STRCODE        
 
@@ -109,7 +109,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                intentry                       000004  00016A  00016E         8       0  CODE        2
+                intentry                       000004  000170  000174         8       0  CODE        2
                 cstackBANK0                    000020  000004  000024        20       1  BANK0       1
                 cstackCOMMON                   000070  00000A  00007A        70       1  COMMON      1
                 config                         002007  000002  002009      400E       0  CONFIG      2
@@ -123,13 +123,13 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-0003              1           2
-                         016E-1FFF            800
+                         0174-1FFF            800
         COMMON           007A-007D              4           1
         CONST            0003-0003              1           2
-                         016E-1FFF            100
+                         0174-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-0003              1           2
-                         016E-1FFF            100
+                         0174-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0024-006F             4C           1
                          00A0-00EF             50
@@ -141,9 +141,9 @@ UNUSED ADDRESS RANGES
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
         STRCODE          0003-0003              1           2
-                         016E-1FFF           1E92
+                         0174-1FFF           1E8C
         STRING           0003-0003              1           2
-                         016E-1FFF            100
+                         0174-1FFF            100
 
                                   Symbol Table
 
@@ -152,11 +152,13 @@ _ADCON1                   (abs)        009F
 _ADRESH                   (abs)        001E
 _ANSEL                    (abs)        0188
 _INTCONbits               (abs)        000B
-_ISR                      text3        0101
+_ISR                      text3        0104
 _PIE1bits                 (abs)        008C
 _PIR1bits                 (abs)        000C
 _PORTA                    (abs)        0005
+_PORTAbits                (abs)        0005
 _PORTB                    (abs)        0006
+_PORTC                    (abs)        0007
 _SSPBUF                   (abs)        0013
 _SSPCON                   (abs)        0014
 _SSPIF                    (abs)        0063
@@ -164,6 +166,7 @@ _SSPSTAT                  (abs)        0094
 _SSPSTATbits              (abs)        0094
 _TRISA                    (abs)        0085
 _TRISB                    (abs)        0086
+_TRISC                    (abs)        0087
 _TRISC3                   (abs)        043B
 _TRISC5                   (abs)        043D
 __CFG_BOR4V$BOR40V        (abs)        0000
@@ -255,26 +258,26 @@ ___latbits                (abs)        0002
 ___sp                     stack        0000
 ___stackhi                (abs)        0000
 ___stacklo                (abs)        0000
-__end_of_ISR              text3        013A
+__end_of_ISR              text3        0140
 __end_of__initialization  cinit        0013
 __end_of_initADC          text2        00B7
-__end_of_main             maintext     0101
-__end_of_spiInit          text1        0158
-__end_of_spiRead          text5        0161
-__end_of_spiReceiveWait   text6        0168
-__end_of_spiWrite         text4        016E
+__end_of_main             maintext     0104
+__end_of_spiInit          text1        015E
+__end_of_spiRead          text5        0167
+__end_of_spiReceiveWait   text6        016E
+__end_of_spiWrite         text4        0174
 __initialization          cinit        000F
 __pbssCOMMON              bssCOMMON    0076
 __pcstackBANK0            cstackBANK0  0020
 __pcstackCOMMON           cstackCOMMON 0070
 __pintentry               intentry     0004
 __pmaintext               maintext     00B7
-__ptext1                  text1        013A
+__ptext1                  text1        0140
 __ptext2                  text2        0017
-__ptext3                  text3        0101
-__ptext4                  text4        0168
-__ptext5                  text5        0158
-__ptext6                  text6        0161
+__ptext3                  text3        0104
+__ptext4                  text4        016E
+__ptext5                  text5        015E
+__ptext6                  text6        0167
 __size_of_ISR             (abs)        0000
 __size_of_initADC         (abs)        0000
 __size_of_main            (abs)        0000
@@ -287,10 +290,10 @@ _adc2                     bssCOMMON    0076
 _initADC                  text2        0017
 _main                     maintext     00B7
 _ready                    bssCOMMON    0079
-_spiInit                  text1        013A
-_spiRead                  text5        0158
-_spiReceiveWait           text6        0161
-_spiWrite                 text4        0168
+_spiInit                  text1        0140
+_spiRead                  text5        015E
+_spiReceiveWait           text6        0167
+_spiWrite                 text4        016E
 _state                    bssCOMMON    0078
 btemp                     (abs)        007E
 end_of_initialization     cinit        0013
@@ -318,7 +321,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 57 in file "SPI.c"
+		line 58 in file "SPI.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -533,10 +536,10 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 SPI_Init.c
-		_spiWrite      		CODE           	0168	0000	7
-		_spiInit       		CODE           	013A	0000	31
-		_spiReceiveWait		CODE           	0161	0000	8
-		_spiRead       		CODE           	0158	0000	10
+		_spiWrite      		CODE           	016E	0000	7
+		_spiInit       		CODE           	0140	0000	31
+		_spiReceiveWait		CODE           	0167	0000	8
+		_spiRead       		CODE           	015E	0000	10
 
 SPI_Init.c estimated size: 56
 
@@ -551,8 +554,8 @@ ADC_Init.c
 ADC_Init.c estimated size: 161
 
 SPI.c
-		_ISR           		CODE           	0101	0000	58
-		_main          		CODE           	00B7	0000	75
+		_ISR           		CODE           	0104	0000	61
+		_main          		CODE           	00B7	0000	78
 
-SPI.c estimated size: 133
+SPI.c estimated size: 139
 
